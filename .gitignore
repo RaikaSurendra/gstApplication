@@ -1,0 +1,19 @@
+# Binaries
+gst_app
+
+# OS-specific files
+.DS_Store
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+build/bin
+node_modules
+frontend/dist
