@@ -1,19 +1,35 @@
-# README
+# Build Directory
 
-## About
+The build directory is used to house all the build files and assets for your application. 
 
-This is the official Wails Vanilla template.
+The structure is:
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+* bin - Output directory
+* darwin - macOS specific files
+* windows - Windows specific files
 
-## Live Development
+## Mac
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
+The `darwin` directory holds files specific to Mac builds.
+These may be customised and used as part of the build. To return these files to the default state, simply delete them
+and
+build with `wails build`.
 
-## Building
+The directory contains the following files:
 
-To build a redistributable, production mode package, use `wails build`.
+- `Info.plist` - the main plist file used for Mac builds. It is used when building using `wails build`.
+- `Info.dev.plist` - same as the main plist file but used when building using `wails dev`.
+
+## Windows
+
+The `windows` directory contains the manifest and rc files used when building with `wails build`.
+These may be customised for your application. To return these files to the default state, simply delete them and
+build with `wails build`.
+
+- `icon.ico` - The icon used for the application. This is used when building using `wails build`. If you wish to
+  use a different icon, simply replace this file with your own. If it is missing, a new `icon.ico` file
+  will be created using the `appicon.png` file in the build directory.
+- `installer/*` - The files used to create the Windows installer. These are used when building using `wails build`.
+- `info.json` - Application details used for Windows builds. The data here will be used by the Windows installer,
+  as well as the application itself (right click the exe -> properties -> details)
+- `wails.exe.manifest` - The main application manifest file.
